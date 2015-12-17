@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/1449574796949" xmlns:ns0="http://www.iisigroup.com/Service/ServiceMediation/Schemas/ServiceMediationRequestMessage.xsd" xmlns:ns2="http://www.iisigroup.com/Service/ServiceMediation/Schemas/ServiceResponseMessage.xsd" xmlns:ns1="http://www.iisigroup.com/Service/ServiceMediation/Schemas/ServiceRequestMessage.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://xmlns.example.com/1449574796949">
+    <wsdl:types>
+        <xs:schema xmlns="http://www.iisigroup.com/Service/ServiceMediation/Schemas/ServiceMediationRequestMessage.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.iisigroup.com/Service/ServiceMediation/Schemas/ServiceMediationRequestMessage.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="Content">
+                <xs:sequence>
+                    <xs:element ref="ns0:ReqHeader"/>
+                    <xs:element ref="ns0:ServiceContent"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="MessageIntegrity">
+                <xs:sequence>
+                    <xs:element name="SignatureType" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Signature" type="xs:string"/>
+                    <xs:element name="ExtensionMessageIntegrity" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ReqHeader">
+                <xs:sequence>
+                    <xs:element name="ChannelID" type="xs:string" minOccurs="0"/>
+                    <xs:element name="ServiceDomain" type="xs:string"/>
+                    <xs:element name="OperationName" type="xs:string"/>
+                    <xs:element name="ConsumerID" type="xs:string"/>
+                    <xs:element name="CountryCode" type="xs:string"/>
+                    <xs:element name="ServiceRouting" type="xs:string" minOccurs="0"/>
+                    <xs:element name="TransactionID" type="xs:string"/>
+                    <xs:element name="UUID" type="xs:string" minOccurs="0"/>
+                    <xs:element name="CorrelationID" type="xs:string" minOccurs="0"/>
+                    <xs:element name="RqTimestamp" type="xs:dateTime"/>
+                    <xs:element name="RsTimestamp" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="SecurityDetails" type="ns0:SecurityDetail" minOccurs="0"/>
+                    <xs:element name="SessionControl" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SecurityContext">
+                <xs:sequence>
+                    <xs:element name="AuthenticationID" type="xs:string" minOccurs="0"/>
+                    <xs:element name="SecurityToken" type="xs:string" minOccurs="0"/>
+                    <xs:element name="ExtensionSecurityContext" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SecurityDetail">
+                <xs:sequence>
+                    <xs:element name="SecurityContext" type="ns0:SecurityContext" minOccurs="0"/>
+                    <xs:element name="MessageIntegrity" type="ns0:MessageIntegrity" minOccurs="0"/>
+                    <xs:element name="ExtensionSecurityDetail" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceContent">
+                <xs:sequence>
+                    <xs:any processContents="lax" namespace="##any"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Content" type="ns0:Content"/>
+            <xs:element name="ReqHeader" type="ns0:ReqHeader"/>
+            <xs:element name="ServiceContent" type="ns0:ServiceContent"/>
+        </xs:schema>
+        <xs:schema xmlns="http://www.iisigroup.com/Service/ServiceMediation/Schemas/ServiceRequestMessage.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.iisigroup.com/Service/ServiceMediation/Schemas/ServiceRequestMessage.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="Content">
+                <xs:sequence>
+                    <xs:element ref="ns1:ServiceHeader"/>
+                    <xs:element ref="ns1:ServiceContent"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceContent">
+                <xs:sequence>
+                    <xs:any processContents="lax" namespace="##any"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceHeader">
+                <xs:sequence>
+                    <xs:element name="ChannelID" type="xs:string"/>
+                    <xs:element name="ConsumerID" type="xs:string"/>
+                    <xs:element name="ServiceDomain" type="xs:string"/>
+                    <xs:element name="OperationName" type="xs:string"/>
+                    <xs:element name="TransactionID" type="xs:string"/>
+                    <xs:element name="RequestUUID" type="xs:string"/>
+                    <xs:element name="Priority" type="xs:string"/>
+                    <xs:element name="JobID" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Content" type="ns1:Content"/>
+            <xs:element name="ServiceContent" type="ns1:ServiceContent"/>
+            <xs:element name="ServiceHeader" type="ns1:ServiceHeader"/>
+        </xs:schema>
+        <xs:schema xmlns="http://www.iisigroup.com/Service/ServiceMediation/Schemas/ServiceResponseMessage.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.iisigroup.com/Service/ServiceMediation/Schemas/ServiceResponseMessage.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="Content">
+                <xs:sequence>
+                    <xs:any minOccurs="0" processContents="lax" namespace="##any"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Content" type="ns2:Content"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="Demo1208WSDL-service1">
+        <wsdl:port name="PortTypeEndpoint1" binding="tns:PortTypeEndpoint1Binding">
+            <soap:address location="http://localhost:-1/Demo1208WSDL-service1.serviceagent/PortTypeEndpoint1"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="PortType">
+        <wsdl:operation name="invoke">
+            <wsdl:input message="tns:InputMessage"/>
+            <wsdl:output message="tns:OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="PortTypeEndpoint1Binding" type="tns:PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="invoke">
+            <soap:operation style="document" soapAction="/Demo1208WSDL-service1.serviceagent/PortTypeEndpoint1/invoke"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="header body"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="content"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="InputMessage">
+        <wsdl:part name="header" element="ns0:ReqHeader"/>
+        <wsdl:part name="body" element="ns1:Content"/>
+    </wsdl:message>
+    <wsdl:message name="OutputMessage">
+        <wsdl:part name="content" element="ns2:Content"/>
+    </wsdl:message>
+</wsdl:definitions>
